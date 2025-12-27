@@ -1,0 +1,2 @@
+# Ignore HTML templates for language statistics
+templates/* linguist-detectable=false
