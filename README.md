@@ -1,53 +1,42 @@
-#EditZZZ – AI-Powered Online Image Editor
+**EditZZZ – AI-Powered Online Image Editor**
 
 EditZZZ is a web-based image editing application built using Flask and OpenCV.
 It allows users to upload images, apply various filters (including AI-style effects), resize images, and download the processed results — all through a clean and simple UI.
 
-🚀 Features
-🔧 Basic Image Editing
+**Features**
+-Basic Image Editing
+-Grayscale conversion
+-Blur filter
+-Sharpen filter
+-Image rotation (90°)
 
-Grayscale conversion
+**AI-Style Image Processing**
+-Cartoonify effect (bilateral filtering + adaptive thresholding)
+-Edge detection using Canny algorithm
 
-Blur filter
+**Image Resizing**
+-Resize images to custom width and height
+-Maintains fast processing and quality output
 
-Sharpen filter
+**Automatic File Cleanup**
+-Automatically deletes uploaded and processed images older than 5 minutes
+-Prevents disk space overflow
 
-Image rotation (90°)
+**Mimics real-world production behavior**
+-Secure & Safe
+-File type validation
+-UUID-based filenames (prevents overwriting)
+-Sanitized filenames using Werkzeug
 
-🤖 AI-Style Image Processing
+**Tech Stack**
+-Backend: Flask (Python)
+-Image Processing: OpenCV, NumPy
+-Frontend: HTML, Bootstrap 5
+-Utilities: UUID, File lifecycle management
 
-Cartoonify effect (bilateral filtering + adaptive thresholding)
-
-Edge detection using Canny algorithm
-
-📐 Image Resizing
-
-Resize images to custom width and height
-
-Maintains fast processing and quality output
-
-🧹 Automatic File Cleanup
-
-Automatically deletes uploaded and processed images older than 5 minutes
-
-Prevents disk space overflow
-
-Mimics real-world production behavior
-
-🔐 Secure & Safe
-
-File type validation
-
-UUID-based filenames (prevents overwriting)
-
-Sanitized filenames using Werkzeug
-
-🛠️ Tech Stack
-
-Backend: Flask (Python)
-
-Image Processing: OpenCV, NumPy
-
-Frontend: HTML, Bootstrap 5
-
-Utilities: UUID, File lifecycle management
+**Future Improvements**
+-REST API support for image editing
+-React-based frontend
+-User authentication & image history
+-More AI filters (face detection, background blur)
+-Cloud deployment
