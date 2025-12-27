@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>EditZZZ | Online Image Editor</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <style>
+    .border-dashed {
+      border-style: dashed !important;
+    }
+  </style>
+</head>
+
+<body class="bg-light">
+
+<!-- NAVBAR -->
+<nav class="navbar navbar-expand-lg bg-white shadow-sm sticky-top">
+  <div class="container">
+
+    <a class="navbar-brand fw-bold" href="/home">EditZZZ</a>
+
+    <ul class="navbar-nav mx-auto">
+      <li class="nav-item">
+        <a class="nav-link active fw-semibold" href="/home">Home</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/resize">Resize</a>
+      </li>
+    </ul>
+
+    
+
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="bg-dark text-light text-center py-3">
+  <h2 class="fw-bold mb-1">EditZZZ</h2>
+  <p class="mb-0 small">Edit images online — fast & simple</p>
+</div>
+
+<!-- FLASH MESSAGE -->
+<div class="container mt-3">
+  {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+      {% for category, message in messages %}
+        <div class="alert alert-success alert-dismissible fade show">
+          {{ message | safe }}
+          <button class="btn-close" data-bs-dismiss="alert"></button>
+        </div>
+      {% endfor %}
+    {% endif %}
+  {% endwith %}
+</div>
+
+<!-- EDIT CARD -->
+<div class="container my-5">
+  <div class="row justify-content-center">
+    <div class="col-md-8 col-lg-6">
+
+      <div class="card shadow border-0">
+        <div class="card-body p-4">
+
+          <h4 class="text-center mb-4">Edit Your Image</h4>
+
+          <form action="/edit" method="post" enctype="multipart/form-data">
+
+            <!-- Upload -->
+            <div class="border border-2 border-dashed rounded p-4 text-center mb-3">
+              <p class="mb-2">📤 Upload an image</p>
+              <input class="form-control" type="file" name="file" id="formFile" required>
+            </div>
+
+            <!-- Preview -->
+            <img id="preview" class="img-fluid rounded mb-3 d-none" style="max-height:300px;">
+
+            <!-- FILTERS -->
+            <p class="fw-semibold mb-2">Filters</p>
+            <div class="row g-2 mb-3">
+              <div class="col-6">
+                <input type="radio" class="btn-check" name="filter" value="Grayscale" id="gray">
+                <label class="btn btn-outline-primary w-100" for="gray">Grayscale</label>
+              </div>
+              <div class="col-6">
+                <input type="radio" class="btn-check" name="filter" value="Blur" id="blur">
+                <label class="btn btn-outline-primary w-100" for="blur">Blur</label>
+              </div>
+              <div class="col-6">
+                <input type="radio" class="btn-check" name="filter" value="Sharpen" id="sharp">
+                <label class="btn btn-outline-primary w-100" for="sharp">Sharpen</label>
+              </div>
+              <div class="col-6">
+                <input type="radio" class="btn-check" name="filter" value="Rotate" id="rotate">
+                <label class="btn btn-outline-primary w-100" for="rotate">Rotate</label>
+              </div>
+              <div class="col-6">
+                <input type="radio" class="btn-check" name="filter" value="Cartoon" id="cartoon">
+                <label class="btn btn-outline-primary w-100" for="cartoon">Cartoon (AI)</label>
+              </div>
+              <div class="col-6">
+                <input type="radio" class="btn-check" name="filter" value="Edges" id="edges">
+                <label class="btn btn-outline-primary w-100" for="edges">Edge Detect</label>
+              </div>
+            </div>
+
+            <!-- FORMAT -->
+            <p class="fw-semibold mb-2">Convert Format</p>
+            <select class="form-select mb-3" name="format">
+              <option selected disabled>Select format (optional)</option>
+              <option value="PNG">PNG</option>
+              <option value="JPG">JPG</option>
+              <option value="JPEG">JPEG</option>
+            </select>
+
+            <button class="btn btn-success w-100" type="submit"
+              onclick="this.innerText='Processing...'">
+              Apply Changes
+            </button>
+
+          </form>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+<script>
+document.getElementById("formFile").addEventListener("change", function(e) {
+  const file = e.target.files[0];
+  if (!file) return;
+  const img = document.getElementById("preview");
+  img.src = URL.createObjectURL(file);
+  img.classList.remove("d-none");
+});
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,14 @@
+# Python
+__pycache__/
+*.pyc
+
+# Virtual environment
+venv/
+.env/
+
+# Uploaded & generated files
+uploads/
+static/
+
+# OS files
+.DS_Store
